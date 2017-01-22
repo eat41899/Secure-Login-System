@@ -1,0 +1,98 @@
+@charset "utf-8";
+/* CSS Document */
+
+ body { background-color: #333333}
+p {color: whitesmoke;}
+a {color: whitesmoke;}
+#login-form
+{
+	margin-top:10%;
+
+}
+
+img{
+    border-radius: 10%;
+}
+table
+{
+	border: solid 1px;
+	padding:25px;
+    background-color:#404040;
+    border-radius: 10px;
+}
+table tr,td
+{
+	padding-left:15px;
+    padding-right:15px;
+    padding-top: 3px;
+    padding-bottom:3px;
+    text-align: center;
+}
+table tr td input
+{
+	width:97%;
+	height:45px;
+	border:solid 1px;
+	border-radius:10px;
+	padding-left:10px;
+	font-size:1em;
+	background:azure;
+/*	transition-duration:0.5s;*/
+	box-shadow: inset 0px 0px 1px rgba(0,0,0,0.4);
+}
+
+/* CSS Button Generator */ 
+table tr td button
+{
+	width:100%;
+	height:45px;
+	border:0px;
+    background: #18ad36;
+    background-image: -webkit-linear-gradient(top, #18ad36, #04d959);
+    background-image: -moz-linear-gradient(top, #18ad36, #04d959);
+    background-image: -ms-linear-gradient(top, #18ad36, #04d959);
+    background-image: -o-linear-gradient(top, #18ad36, #04d959);
+    background-image: linear-gradient(to bottom, #18ad36, #04d959);
+    border-radius: 41px;
+    font-family: Arial;
+    color: #fffcff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+}
+
+/* CSS Button Generator */ 
+table tr td button:hover {
+      background: #3cb0fd;
+      background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+      background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+      background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+      background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+      background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+      text-decoration: none;
+}
+
+
+table tr td button:active
+{
+	position:relative;
+	top:1px;
+}
+table tr td a
+{
+	text-decoration: none;
+	color:blue;
+	font-size:18px;
+    
+}
+
+span {
+    color:blue;
+}
+
+
+
+.figure {
+    display: inline-block;
+}
+
