@@ -1,6 +1,5 @@
 <?php
-//This page created captcha image with 4-6 random digits
-
+//This page creates captcha image with 4-6 random digits
 
 session_start();
 $code=rand(1000,999999);
