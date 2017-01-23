@@ -1,4 +1,3 @@
-
 <?php
 
 //This is where user can registere, After enter all the information, given that the email address matches the confirmation email address and Captcha code is entered correctly
@@ -13,13 +12,10 @@ if(isset($_SESSION['users'])!="")
 include_once 'comp424.php';
 
 if(isset($_POST['btn-signup']))
-{
-   // $_SESSION['user'] = $_POST['uname'];
-   // $_SESSION['password'] = $_POST['pass'];
-    
+{   
     //SQL INJECTION and XSS
-	$uname = mysqli_real_escape_string($connection,strip_tags($_POST['uname']));
-	$upass = mysqli_real_escape_string($connection,strip_tags($_POST['pass']));
+    $uname = mysqli_real_escape_string($connection,strip_tags($_POST['uname']));
+    $upass = mysqli_real_escape_string($connection,strip_tags($_POST['pass']));
     $fname = mysqli_real_escape_string($connection,strip_tags($_POST['fname']));
     $lname = mysqli_real_escape_string($connection,strip_tags($_POST['lname']));             
     $email = mysqli_real_escape_string($connection,strip_tags($_POST['email']));             
@@ -27,34 +23,29 @@ if(isset($_POST['btn-signup']))
     $bDay = mysqli_real_escape_string($connection,strip_tags($_POST['bDay']));
     $securityQ = mysqli_real_escape_string($connection,strip_tags($_POST['securityQ']));
     $securityA = mysqli_real_escape_string($connection,strip_tags($_POST['securityA']));
-    //SQL INJECTION and XSS
-    
+	
     //generate conf code for email verif.
     $conf_code = sha1(uniqid(rand()));
-
 	
-	$result = mysqli_query($connection,"SELECT * FROM users WHERE username='$uname'");
-	//get number of rows found in database with the given username
+    $result = mysqli_query($connection,"SELECT * FROM users WHERE username='$uname'");
+    //get number of rows found in database with the given username
     $count =mysqli_num_rows($result);
     
     //check if email and confirmation email match
-	if ($uemail==$uemailC){
-        
+    if ($uemail==$uemailC){
+    	    
         //if username is unique
         if($count==0){
-            if (ctype_alnum($uname))
-            {
-                if(isset($_POST["captcha"])&&$_POST["captcha"]!=""&&$_SESSION["code"]==$_POST["captcha"])
-                {
-                    if(mysqli_query($connection,"INSERT INTO usersTemp (code,username,password,firstName,lastName,birthday,email,securityQuestion,securityAnswer) VALUES('$conf_code','$uname','$uPass','$fname','$lname','$bDay','$email','$securityQ','$securityA')"))
-                    {
-                        $message = "Click on link to activate account:
+            if (ctype_alnum($uname)){
+                if(isset($_POST["captcha"])&&$_POST["captcha"]!=""&&$_SESSION["code"]==$_POST["captcha"]){
+                    if(mysqli_query($connection,"INSERT INTO usersTemp (code,username,password,firstName,lastName,birthday,email,securityQuestion,securityAnswer) VALUES('$conf_code','$uname','$uPass','$fname','$lname','$bDay','$email','$securityQ','$securityA')")){
+                        
+			$message = "Click on link to activate account:
                                 http://localhost/Comp424/confirmation.php?passkey=$conf_code";
                     
                         $sentmail = mail("$email","Registration Confirmation","$message");
                         
-                        if($sentmail)
-                        {
+                        if($sentmail){
                              ?>
                             <script>alert('An Email with Confirmation link has been sent to you');</script>
                             <?php   
@@ -64,15 +55,12 @@ if(isset($_POST['btn-signup']))
                             <script>alert('Confirmation Email could not be sent!');</script>
                             <?php
                         }
-                        
                     }
                     else{
                         ?>
                         <script>alert('There was an error during your registeration!');</script>
                         <?php
                     }
-                
-                
                 }   
                 else
                 {
@@ -92,12 +80,10 @@ if(isset($_POST['btn-signup']))
                 <script>alert('Your username is already taken, please try another one!');</script>
                 <?php
         }
-        
     }
     else{
         ?><script>alert("Your Email Address Does Not Match Your Confirm Email Address!")</script><?php
     }
-	
 }
 ?>
 <!DOCTYPE html >
