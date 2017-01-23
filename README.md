@@ -1,4 +1,4 @@
-# Secure-Login-System
+# Secure-Login-System LAMP stack
 
 1. Preparing the web server
 
